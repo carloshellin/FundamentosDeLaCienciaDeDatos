@@ -1,0 +1,77 @@
+# Clasificacion supervisada
+# Descarga del paquete 'rpart' desde Paquetes/Install packages from local files
+library(rpart)
+
+Warning message:
+package ‘rpart’ was built under R version 4.1.2 
+
+# Clasificacion supervisada con arboles de decision
+# Crear documento de texto de las calificaciones y convertirlo en un data frame
+muestra = read.table("calificaciones.txt")
+muestra
+  T L P C.G
+1 A A B  Ap
+2 A B D  Ss
+3 D D C  Ss
+4 D D A  Ss
+5 B C B  Ss
+6 C B B  Ap
+7 B B A  Ap
+8 C D C  Ss
+9 B A C  Ss
+
+# Aplicar algoritmo
+clasificacion=rpart(C.G~.,data=muestra,method="class",minsplit=1)
+clasificacion
+n= 9 
+
+node), split, n, loss, yval, (yprob)
+      * denotes terminal node
+
+1) root 9 3 Ss (0.3333333 0.6666667)  
+  2) L=A,B 5 2 Ap (0.6000000 0.4000000)  
+    4) P=A,B 3 0 Ap (1.0000000 0.0000000) *
+    5) P=C,D 2 0 Ss (0.0000000 1.0000000) *
+  3) L=C,D 4 0 Ss (0.0000000 1.0000000) *
+
+# Clasificacion supervisada con regresion
+# Crear documento de texto de los datos de los planetas y convertirlo en un data frame
+muestra2 = read.table("planetas.txt")
+muestra2
+           R   D
+Mercurio 2.4 5.4
+Venus    6.1 5.2
+Tierra   6.4 5.5
+Marte    3.4 3.9
+
+# Aplicar regresion lineal
+regresion=lm(D~R, data=muestra2)
+regresion
+
+Call:
+lm(formula = D ~ R, data = muestra2)
+
+Coefficients:
+(Intercept)            R  
+     4.3624       0.1394  
+
+# Datos extraidos de la regresion
+summary(regresion)
+
+Call:
+lm(formula = D ~ R, data = muestra2)
+
+Residuals:
+Mercurio    Venus   Tierra    Marte 
+ 0.70312 -0.01253  0.24566 -0.93624 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)  
+(Intercept)   4.3624     1.2050   3.620   0.0685 .
+R             0.1394     0.2466   0.565   0.6289  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.846 on 2 degrees of freedom
+Multiple R-squared:  0.1377,    Adjusted R-squared:  -0.2935 
+F-statistic: 0.3193 on 1 and 2 DF,  p-value: 0.6289

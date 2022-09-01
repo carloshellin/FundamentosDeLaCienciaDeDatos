@@ -1,0 +1,9 @@
+	X A T N B C
+suceso1 1	0	0	1	1	1
+suceso2 1	0	1	0	1	1
+suceso3 1	0	0	1	0	1
+suceso4 1	0	1	1	1	0
+suceso5 1	0	0	0	1	1
+suceso6 0	0	0	1	0	0
+suceso7 1	0	0	0	1	1
+suceso8 0	1	1	0	0	0

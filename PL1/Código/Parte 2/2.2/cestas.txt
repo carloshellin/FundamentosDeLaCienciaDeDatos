@@ -1,0 +1,7 @@
+	Pan Agua Cafe Leche Naranjas
+suceso1 1	1	0	1	1
+suceso2 1	1	1	1	0
+suceso3 1	1	0	1	0
+suceso4 1	0	1	1	0
+suceso5 1	1	0	0	0
+suceso6 0	0	0	1	0
